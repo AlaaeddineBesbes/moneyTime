@@ -11,10 +11,16 @@ var client = new Twitter({
   access_token_key: accesstoken,
   access_token_secret: accesstokensecret
 });
- 
+ //get user followers
 var params = {screen_name: 'elonmusk'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  //if (!error) {
+client.get('followers/list', params, function(error, tweets, response) {
+  if (!error) {
     console.log(tweets);
-  //}
+  }
+});
+//get user timeline
+client.get('statuses/user_timeline', params, function(error, tweets, response) {
+  if (!error) {
+    console.log(tweets);
+  }
 });
