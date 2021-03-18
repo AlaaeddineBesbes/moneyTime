@@ -10,10 +10,10 @@ apps={
     'app4':['KhTLoSQ7x7LUuGudGsVPTTG3h','rMCanbMargdzTQX1T4KOPEzOFoW0KdCVcT6iDfWydMVcLzJpFF','1059516754983030791-RQfJJSwWzGq9eFF2lIB7ZN939wSDWr','gtZtrITLAu9O9She0LlTrvi2FcB8w5KEfHnmK4sehhwkV']
 }
 
-apikey = '6HrUE4jOeiji0rFHal0IJAoyQ'
-apikeysecret = 'T0uFpIDdUVfIDALPwUYl5MIOycJ8TNVebafUxcYcy6uglO8cUi'
-accesstoken = '1059516754983030791-hy17of2OaUWvdLSS6cRE05ShBQX21t'
-accesstokensecret = 'cHX1s2F4wYfMuDKBtqK1n1Mp1bzdTJVkGI5AteicW6EEF'
+apikey = 'M8TT6pBB44KVaGqdVlBvzbVN0'
+apikeysecret = 'KBQBwwYRzGxeI6sEppk4qg8ls6bPgP9ma433KGC2oXC1I7m3P3'
+accesstoken = '1059516754983030791-YPS0eniceMHVyvqlYS0DyQRKK2t7id'
+accesstokensecret = 'KOFeex0zQBVDBdaNZ31m3ABbV9GPwL7jA6ru9X23RAlLI'
 dic_values=list(apps.values())
 '''def setAPP(app_number):
     apikey = dic_values[app_number][0]
@@ -53,4 +53,5 @@ def followerTweets(screen_name):
     for tweet in tweets:
         if tweet.created_at>startDate and tweet.created_at<endDate:
             print(tweet.text)
+            
 followerTweets('@Univ_Savoie')
