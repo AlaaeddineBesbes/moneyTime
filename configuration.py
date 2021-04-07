@@ -10,10 +10,10 @@ apps={
     'app4':['KhTLoSQ7x7LUuGudGsVPTTG3h','rMCanbMargdzTQX1T4KOPEzOFoW0KdCVcT6iDfWydMVcLzJpFF','1059516754983030791-RQfJJSwWzGq9eFF2lIB7ZN939wSDWr','gtZtrITLAu9O9She0LlTrvi2FcB8w5KEfHnmK4sehhwkV']
 }
 
-apikey = 'M8TT6pBB44KVaGqdVlBvzbVN0'
-apikeysecret = 'KBQBwwYRzGxeI6sEppk4qg8ls6bPgP9ma433KGC2oXC1I7m3P3'
-accesstoken = '1059516754983030791-YPS0eniceMHVyvqlYS0DyQRKK2t7id'
-accesstokensecret = 'KOFeex0zQBVDBdaNZ31m3ABbV9GPwL7jA6ru9X23RAlLI'
+apikey = 'AobAT0nYQpNhmKf8kLbGvIFhm'
+apikeysecret = 'vMreRBfElTAV32JzqrT8Mi4UyKs0Pyv7wxIY9RSJZ7SFg76Bzp'
+accesstoken = '1059516754983030791-jMQFYtAehsBR2WJSZIxNFXpiBhrMSD'
+accesstokensecret = 'j1KpQytFciMt3mZaqNs9v0gYbaEP7LjJ8WlWmJs4xubL6'
 dic_values=list(apps.values())
 '''def setAPP(app_number):
     apikey = dic_values[app_number][0]
