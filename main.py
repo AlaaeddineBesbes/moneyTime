@@ -93,6 +93,7 @@ def show_entry_fields():
             #sometimes when sending a lot of requests twitter stops authenticating the credentials 
             #we solved this using a time sleep
             time.sleep(1)
+    print("the job is done ")
 
     
 
