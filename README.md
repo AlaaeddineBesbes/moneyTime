@@ -6,7 +6,6 @@ Money, Time est un outil  qui automatise la tache d'extraction des  followers et
 l'utilisation est tres simple a travers une interface graphique 
 
 ## installation: 
-#### changer les clés de l' API 
 changer les clés keys dans le script main.py :
 ```python
 
