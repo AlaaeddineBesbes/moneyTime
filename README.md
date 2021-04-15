@@ -1,9 +1,12 @@
-# moneyTime
+# MoneyTime
 
-### Introduction
-Nous avons consacré nos projets sur l’extraction de données. Dans ce cas précis, le but, dans un premier temps, était de choisir l’ensemble des données qui nous permettraient de faire une étude analytique complète et proposer une étude marketing dont nous vous parlerons dans les perspectives à la page
+## Introduction
+Money, Time est un outil  qui automatise la tache d'extraction des  followers et leurs tweets faite entre 2 dates pour un Compt donner
+## utilisation
+l'utilisation est tres simple a travers une interface graphique 
 
-### installation: 
+## installation: 
+#### changer les cles de l' API 
 changer les api keys dans le script main :
 ```python
 
@@ -13,4 +16,5 @@ changer les api keys dans le script main :
     accesstokensecret = ''
 
 ```
+#### installation de la bibliotheque tweepy
 tweepy installation : pip install -U git+https://github.com/tweepy/tweepy.git@2efe385fc69385b57733f747ee62e6be12a1338b
