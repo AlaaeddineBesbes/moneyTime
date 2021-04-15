@@ -16,7 +16,7 @@ def show_entry_fields():
     #followers_screenNames list to hold the followers names
     followers = []
     followers_screenNames = []
-    #extracting the clinet twitter screen Name and the dates to extract the tweets
+    #extracting the client twitter screen Name and the dates to extract the tweets
     client_twitter_name=e1.get()
     startDate = e2.get()
     endDate=e3.get()
@@ -25,7 +25,7 @@ def show_entry_fields():
     csvFollowers_name=open('followers_name.csv','w')
     csvWriter = csv.writer(csvFollowers_name)
 
-    ##creating a csv writer to save to followers tweets
+    ##creating a csv writer to save to followers tweets and the date
     csvFollowers_tweets=open('followers_tweets.csv','w')
     csvTweetWriter = csv.writer(csvFollowers_tweets)
     #setting the auth keys to auth object 
@@ -37,7 +37,7 @@ def show_entry_fields():
     if(api.verify_credentials):
         print ('We successfully logged in')
 
-    #get_followers a function that extract followers names from a given twitter account
+    #get_followers : a function that extract followers names from a given twitter account
     def get_followers(screen_name):
         print('Getting Follower list of',screen_name)
         #creating the users opbject that contains all the followers with the get followers api 
@@ -52,7 +52,7 @@ def show_entry_fields():
         except tweepy.TweepError as e:
             print(e)
         
-    #followerTweets a function that extract tweets between 2 dates of all the followers
+    #followerTweets : a function that extract tweets between 2 dates of all the followers
     def followerTweets(startDate,endDate):  
     #going through all the followers names  
         for screen_name in followers_screenNames:
@@ -96,7 +96,7 @@ def show_entry_fields():
     print("the job is done ")
 
     
-
+#create the graphic interface
 interface = tk.Tk()
 
 interface.title("Money Time")
