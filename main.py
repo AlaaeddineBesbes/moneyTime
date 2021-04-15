@@ -5,47 +5,44 @@ import time
 import datetime
 import tkinter as tk
 
-client_tweeter_name=""
+
 def show_entry_fields():
-    client_tweeter_name= str(e1.get())
-    apps={
-    'app1':['zaETUhWd7e8PysLq0Pgo8spNS','ixKOf4j4pLHenQlCsqCiR3yncxaEsX59t44I3IOaJfQ6p2dGrP','1059516754983030791-APZEXSbab2ihwcGIdp9PfnJsSdRc2r','nHFstbt8dySyVJfSJuiEQbyFUtisnypWuoUgg2qIaSOxB'],
-    'app2':['vVvltBl3foYvGBbW7Z7myUVdC','1W5d3ZSLtx2zDDnuSnytKGTj2V5y6WKA9Nut9N0G3ROZOt2xuL','1059516754983030791-otcgBonUb0Lsg2ylFDe8uJTgNWrObJ','uDIYgrjQt94qTqlUFr11GmAKQzongM7G5KFV21ZzifJAI'],
-    'app3':['9D6n7XlbRgJhystVmxU9iyXGO','AhCWmeqwyHZq2qtLUab8XBZrJONpfO6L40lbv9AvsJSyj9v4qw','1059516754983030791-8DsWRRM9YjkxOtXtOkMAKBBQtyfMmW','W7P7huIQ09MymHwY3xVg0knXrDF1Pn9pqoQqbadUmbmI0'],
-    'app4':['TcBtmfZZEhegtUTGVxxScXlJM','apKx1cAfiqzU8Pn8krdCjfLYFwn9NNiWE9MsIRQwDh0J7g1yMD','1059516754983030791-uBDn9DHZmr5SLnMMyFcNRyITHLOW9m','XAx7C8csijDTthDMYAKVXHanuhCJqyZdroWxTeyVjQAVF']
-        }
-
-    dic_values=list(apps.values())
-
-    apikey = dic_values[0][0]
-    apikeysecret = dic_values[0][1]
-    accesstoken = dic_values[0][2]
-    accesstokensecret = dic_values[0][3]
-
+    #setting the apikeys and the access tokens
+    apikey = 'zaETUhWd7e8PysLq0Pgo8spNS'
+    apikeysecret = 'ixKOf4j4pLHenQlCsqCiR3yncxaEsX59t44I3IOaJfQ6p2dGrP'
+    accesstoken = '1059516754983030791-APZEXSbab2ihwcGIdp9PfnJsSdRc2r'
+    accesstokensecret = 'nHFstbt8dySyVJfSJuiEQbyFUtisnypWuoUgg2qIaSOxB'
+    #followers list to hold the follower object
+    #followers_screenNames list to hold the followers names
     followers = []
     followers_screenNames = []
-    '''def setAPP(app_number):
-    apikey = dic_values[app_number][0]
-    apikeysecret = dic_values[app_number][1]
-    accesstoken = dic_values[app_number][2]
-    accesstokensecret = dic_values[app_number][3]
-    '''
-
+    #extracting the clinet twitter screen Name and the dates to extract the tweets
+    client_twitter_name=e1.get()
+    startDate = e2.get()
+    endDate=e3.get()
+    
+    #creating a csv writer to save to followers list
     csvFollowers_name=open('followers_name.csv','w')
     csvWriter = csv.writer(csvFollowers_name)
 
+    ##creating a csv writer to save to followers tweets
     csvFollowers_tweets=open('followers_tweets.csv','w')
     csvTweetWriter = csv.writer(csvFollowers_tweets)
+    #setting the auth keys to auth object 
     auth=tweepy.OAuthHandler(apikey,apikeysecret)
     auth.set_access_token(accesstoken,accesstokensecret)
+    #creating the api to send the requests
     api = tweepy.API(auth,wait_on_rate_limit=True)
+    #verifing the credentials 
     if(api.verify_credentials):
         print ('We successfully logged in')
 
-
+    #get_followers a function that extract followers names from a given twitter account
     def get_followers(screen_name):
         print('Getting Follower list of',screen_name)
+        #creating the users opbject that contains all the followers with the get followers api 
         users = tweepy.Cursor(api.followers, screen_name=screen_name,count=200)
+        #ectracting the names and saving them to a csv file
         try:
             for user in users.items():
                 followers.append(user)
@@ -55,18 +52,23 @@ def show_entry_fields():
         except tweepy.TweepError as e:
             print(e)
         
-
-    def followerTweets(startDate,endDate):
-        
-        fol_tweets=[]
+    #followerTweets a function that extract tweets between 2 dates of all the followers
+    def followerTweets(startDate,endDate):  
+    #going through all the followers names  
         for screen_name in followers_screenNames:
+            fol_tweets=[]
+            #deleting the name from the list to keep track of the number of names left
             followers_screenNames.remove(screen_name)
+            #creating the tweets object with the get user timeline api
             tweets = tweepy.Cursor(api.user_timeline,screen_name=screen_name,include_rts='false').items()
             for tweet in tweets:
+                #all the tweets are in a chronological order once a tweet is more old than the start date 
+                #we finish the extraction and save the tweets 
                 try:
                     if tweet.created_at< endDate:
                         fol_tweets.append([tweet.text.encode('utf8'),tweet.created_at])
                         print(screen_name,tweet.text,tweet.created_at)
+
                     if tweet.created_at<startDate:
                         csvTweetWriter.writerow([screen_name,fol_tweets])
                         
@@ -74,22 +76,22 @@ def show_entry_fields():
                 
                 except tweepy.TweepError as e:
                     print(e)
-        fol_tweets=[]
+        
 
-    startDate = e2.get()
-    endDate=e3.get()
     
-
-    get_followers(client_tweeter_name)
-    date_time_str = '2018-06-29 08:15:27.243860'
+    
+    #using the functions to start the procedure of extracting
+    get_followers(client_twitter_name)
     startDate = datetime.datetime.strptime(startDate, '%Y-%m-%d')
     endDate = datetime.datetime.strptime(endDate, '%Y-%m-%d')
+    
     while(len(followers_screenNames)>0):
-        print(len(followers_screenNames))
+        print(len(followers_screenNames) ,"left ...")
         try:
             followerTweets(startDate,endDate)
         except tweepy.TweepError as e:
-            
+            #sometimes when sending a lot of requests twitter stops authenticating the credentials 
+            #we solved this using a time sleep
             time.sleep(1)
 
     
@@ -122,9 +124,9 @@ e3.grid(row=5, column=1)
 
 
 
+
 tk.Button(interface, 
           text='Valider', command=show_entry_fields).place(x=200,y=150)
 
-print(client_tweeter_name)
 tk.mainloop()
 
