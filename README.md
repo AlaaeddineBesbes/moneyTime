@@ -1,9 +1,9 @@
 # MoneyTime
 
 ## Introduction
-Money, Time est un outil  qui automatise la tache d'extraction des  followers et leurs tweets faite entre 2 dates pour un Compt donner
+Money, Time est un outil  qui automatise la tache d'extraction des followers et leurs tweets qui ont été fait entre 2 dates données pour un Compte donné.
 ## utilisation
-l'utilisation est tres simple a travers une interface graphique 
+l'utilisation est tres simple a travers une interface graphique avec tkinter.
 
 ## installation: 
 changer les clés keys dans le script main.py :
