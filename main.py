@@ -8,10 +8,10 @@ import tkinter as tk
 
 def show_entry_fields():
     #setting the apikeys and the access tokens
-    apikey = 'zaETUhWd7e8PysLq0Pgo8spNS'
-    apikeysecret = 'ixKOf4j4pLHenQlCsqCiR3yncxaEsX59t44I3IOaJfQ6p2dGrP'
-    accesstoken = '1059516754983030791-APZEXSbab2ihwcGIdp9PfnJsSdRc2r'
-    accesstokensecret = 'nHFstbt8dySyVJfSJuiEQbyFUtisnypWuoUgg2qIaSOxB'
+    apikey = ''
+    apikeysecret = ''
+    accesstoken = ''
+    accesstokensecret = ''
     #followers list to hold the follower object
     #followers_screenNames list to hold the followers names
     followers = []
